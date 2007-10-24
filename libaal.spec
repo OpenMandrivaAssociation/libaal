@@ -15,7 +15,7 @@ License:	GPL
 Group:		System/Libraries
 Source0:	%{name}-%{version}.tar.bz2
 # This patch fix ptr/int casting on amd64
-Patch0:     %{name}.castint.patch.bz2
+Patch0:     %{name}.castint.patch
 URL:		http://www.namesys.com/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
