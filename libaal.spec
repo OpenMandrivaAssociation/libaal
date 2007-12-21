@@ -17,6 +17,7 @@ Source0:	%{name}-%{version}.tar.bz2
 # This patch fix ptr/int casting on amd64
 Patch0:     %{name}.castint.patch
 URL:		http://www.namesys.com/
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 libaal library - needed for Reiser4 filesystem utilities.
