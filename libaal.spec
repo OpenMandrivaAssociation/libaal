@@ -1,7 +1,7 @@
-%define version 1.0.4
-%define release %mkrel 5
+%define version 1.0.5
+%define release %mkrel 1
 
-%define major	4
+%define major	5
 %define api	1.0
 %define libname %mklibname aal- %{api} %{major}
 %define libname_basic %mklibname aal-%{api}
@@ -11,12 +11,11 @@ Summary:	Library for Reiser4 filesystem
 Name:		libaal
 Version:	%{version}
 Release:	%{release}
-License:	GPL
+License:	GPLv2
 Group:		System/Libraries
-Source0:	%{name}-%{version}.tar.bz2
-# This patch fix ptr/int casting on amd64
-Patch0:     %{name}.castint.patch
-URL:		http://www.namesys.com/
+Source0:	http://www.kernel.org/pub/linux/utils/fs/reiser4/libaal/%{name}-%{version}.tar.bz2
+Patch0:		libaal-1.0.5-rpmoptflags.patch
+URL:		http://www.kernel.org/pub/linux/utils/fs/reiser4/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -62,10 +61,13 @@ useful when you need to build grub with Reiser4 support.
 
 %prep
 %setup -q
-%patch0 -p1 -b .sizeof
+%patch0 -p1 -b .cflags
 
 %build
 # be very pedantic
+# needed for patch0
+autoreconf -f
+libtoolize
 %configure2_5x \
 	--enable-Werror \
 	%{?debug:--enable-debug}
@@ -73,11 +75,11 @@ useful when you need to build grub with Reiser4 support.
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %if %mdkversion < 200900
 %post   -n %{libname} -p /sbin/ldconfig
@@ -97,7 +99,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 # COPYING contains information other than GPL text
 %doc AUTHORS BUGS COPYING CREDITS ChangeLog README THANKS TODO
-%{_libdir}/libaal-%{api}.so.*
+%{_libdir}/libaal-%{api}.so.%{major}*
 
 %files -n %{minimal_libname}
 %defattr(-,root,root,-)
