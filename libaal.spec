@@ -15,6 +15,7 @@ License:	GPLv2
 Group:		System/Libraries
 Source0:	http://www.kernel.org/pub/linux/utils/fs/reiser4/libaal/%{name}-%{version}.tar.bz2
 Patch0:		libaal-1.0.5-rpmoptflags.patch
+Patch1:		libaal.castint.patch
 URL:		http://www.kernel.org/pub/linux/utils/fs/reiser4/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -62,6 +63,7 @@ useful when you need to build grub with Reiser4 support.
 %prep
 %setup -q
 %patch0 -p1 -b .cflags
+%patch1 -p1 -b .castint
 
 %build
 # be very pedantic
