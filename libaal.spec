@@ -1,5 +1,5 @@
 %define version 1.0.5
-%define release %mkrel 3
+%define release %mkrel 4
 
 %define major	5
 %define api	1.0
@@ -71,6 +71,8 @@ useful when you need to build grub with Reiser4 support.
 autoreconf -f
 libtoolize
 %configure2_5x \
+	--libdir=/%{_lib}\
+	--libexecdir=/%{_lib}\
 	--enable-Werror \
 	%{?debug:--enable-debug}
 
@@ -101,19 +103,19 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 # COPYING contains information other than GPL text
 %doc AUTHORS BUGS COPYING CREDITS ChangeLog README THANKS TODO
-%{_libdir}/libaal-%{api}.so.%{major}*
+/%{_lib}/libaal-%{api}.so.%{major}*
 
 %files -n %{minimal_libname}
 %defattr(-,root,root,-)
-%{_libdir}/libaal-minimal.so.*
+/%{_lib}/libaal-minimal.so.*
 
 %files devel
 %defattr(-,root,root,-)
-%{_libdir}/lib*.so
-%{_libdir}/lib*.la
+/%{_lib}/lib*.so
+/%{_lib}/lib*.la
 %{_includedir}/*
 %{_datadir}/aclocal/*.m4
 
 %files static-devel
 %defattr(-,root,root,-)
-%{_libdir}/lib*.a
+/%{_lib}/lib*.a
