@@ -1,0 +1,25 @@
+--- libaal-1.0.5/configure.in.orig	2009-02-11 19:52:37.000000000 +0100
++++ libaal-1.0.5/configure.in	2009-02-11 20:00:17.000000000 +0100
+@@ -126,9 +126,9 @@
+   ALIGN_FLAGS="-malign-jumps=1 -malign-loops=1 -malign-functions=1"
+ fi
+ 
+-CFLAGS=""
+-MINIMAL_CFLAGS=""
+-GENERIC_CFLAGS=""
++CFLAGS=
++MINIMAL_CFLAGS=$(echo $RPM_OPT_FLAGS | sed -e "s/-O2/-Os/")
++GENERIC_CFLAGS="$RPM_OPT_FLAGS"
+ 
+ # make libc threadsafe (not required for us for awhile, but useful other users of
+ # libaal)
+@@ -165,9 +165,6 @@
+     GENERIC_CFLAGS="$GENERIC_CFLAGS -O0 -g"
+     MINIMAL_CFLAGS="$MINIMAL_CFLAGS -O0 -g"
+ else
+-    GENERIC_CFLAGS="$GENERIC_CFLAGS -O3"
+-    MINIMAL_CFLAGS="$MINIMAL_CFLAGS -Os"
+-
+     if test "x$uninitialized" = xyes; then
+        CFLAGS="$CFLAGS -Wuninitialized"
+     fi
