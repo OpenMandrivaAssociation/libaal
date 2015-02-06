@@ -7,7 +7,7 @@
 Summary:	Library for Reiser4 filesystem
 Name:		libaal
 Version:	1.0.5
-Release:	6
+Release:	7
 License:	GPLv2
 Group:		System/Libraries
 Source0:	http://www.kernel.org/pub/linux/utils/fs/reiser4/libaal/%{name}-%{version}.tar.bz2
