@@ -62,6 +62,8 @@ useful when you need to build grub with Reiser4 support.
 %patch1 -p1 -b .castint
 
 %build
+%global optflags %{optflags} -Qunused-arguments
+
 # be very pedantic
 # needed for patch0
 autoreconf -f
