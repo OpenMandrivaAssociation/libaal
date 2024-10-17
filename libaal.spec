@@ -13,7 +13,7 @@ Group:		System/Libraries
 Source0:	http://www.kernel.org/pub/linux/utils/fs/reiser4/libaal/%{name}-%{version}.tar.gz
 Patch0:		libaal-1.0.5-rpmoptflags.patch
 Patch1:		libaal.castint.patch
-URL:		http://www.kernel.org/pub/linux/utils/fs/reiser4/
+URL:		https://www.kernel.org/pub/linux/utils/fs/reiser4/
 
 %description
 libaal library - needed for Reiser4 filesystem utilities.
