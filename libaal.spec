@@ -15,6 +15,11 @@ Patch0:		libaal-1.0.5-rpmoptflags.patch
 Patch1:		libaal.castint.patch
 URL:		https://www.kernel.org/pub/linux/utils/fs/reiser4/
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 %description
 libaal library - needed for Reiser4 filesystem utilities.
 
